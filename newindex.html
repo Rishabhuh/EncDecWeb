@@ -4,100 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styleRsa.css">
+    <link rel="stylesheet" href="styleRsa.css">
     <title>RSA Encryption</title>
 </head>
 
 <body>
+    <header>
+        <h1>RSA Encryption & Decryption</h1>
+    </header>
 
-    <div class="container">
-        <h1>RSA Encryption</h1>
+    <main>
+        <!-- Encryption Section -->
+        <section class="card">
+            <h2>Encryption Process</h2>
+            <textarea id="plaintext" placeholder="Enter your message here"></textarea>
+            <button onclick="encrypt()">Encrypt</button>
+            <textarea id="ciphertext" placeholder="Ciphertext will appear here" readonly></textarea>
+        </section>
 
+        <!-- Decryption Section -->
+        <section class="card">
+            <h2>Decryption Process</h2>
+            <textarea id="cipherToDecrypt" placeholder="Enter ciphertext to decrypt"></textarea>
+            <button onclick="decrypt()">Decrypt</button>
+            <textarea id="decrypted" placeholder="Decrypted text will appear here" readonly></textarea>
+        </section>
 
-        <div class="flex-container">
-            <div class="column">
-                <h2 id="h1">Encryption process</h2>
-                <textarea id="plaintext" placeholder="Enter your message"></textarea>
-            </div>
+        <!-- File Encryption Section -->
+        <section class="card">
+            <h2>File Encryption</h2>
+            <input type="file" id="fileToEncrypt" accept=".txt, .doc, .docx">
+            <label for="fileToEncrypt">Choose File</label>
+            <button id="fileEncryptButton">Encrypt File</button>
+            <textarea id="fileCiphertext" placeholder="Ciphertext will appear here" readonly></textarea>
+        </section>
 
-            <div class="column">
-                <h2 id="h2">Ciphertext</h2>
-                <textarea id="ciphertext" readonly></textarea>
-            </div>
-        </div>
+        <!-- Image Encryption Section -->
+        <section class="card">
+            <h2>Image Encryption</h2>
+            <input type="file" id="imageToEncrypt" accept=".jpg, .jpeg, .png">
+            <label for="imageToEncrypt">Choose Image</label>
+            <button id="imageEncryptButton">Encrypt Image</button>
+            <textarea id="imageCiphertext" placeholder="Ciphertext will appear here" readonly></textarea>
+        </section>
+    </main>
 
-        <button onclick="encrypt()">Encrypt</button>
+    <footer>
+        <p>Designed by Rishab Ranjan Goswami | RSA Encryption Tool © 2024</p>
+    </footer>
 
-
-        <div class="flex-container">
-            <div class="column">
-                <h2>Decryption</h2>
-                <textarea id="cipherToDecrypt" placeholder="Enter ciphertext to decrypt"></textarea>
-            </div>
-
-            <div class="column">
-                <h2>Decrypted Text</h2>
-                <textarea id="decrypted" readonly></textarea>
-            </div>
-        </div>
-
-        <button onclick="decrypt()">Decrypt</button>
-
-        
-        <div class="flex-container">
-            <div class="column">
-                <h2>File Encryption</h2>
-              
-                <input type="file" id="fileToEncrypt" accept=".txt, .doc, .docx" />
-   
-                <button id="fileEncryptButton">Encrypt File</button>
-            </div>
-
-            <div class="column">
-                <h2>Ciphertext from File</h2>
-                <textarea id="fileCiphertext" readonly></textarea>
-            </div>
-        </div>
-
-
-
-
-    
-        <div class="flex-container">
-            <div class="column">
-                <h2>Image Encryption</h2>
-              
-                <input type="file" id="imageToEncrypt" accept=".jpg, .jpeg, .png" />
-            
-                <button id="imageEncryptButton">Encrypt Image</button>
-            </div>
-        
-            <div class="column">
-                <h2>Cipher Text from Image</h2>
-                <textarea id="imageCiphertext" readonly></textarea>
-            </div>
-        </div>
-
-    
-        <script src="rsa.js"></script>
-        <script src="fileEncryption.js"></script>
-        <script src="rc4.js"></script>
-        
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                document.getElementById('fileEncryptButton').addEventListener('click', function () {
-                    encryptFile('fileToEncrypt', 'fileCiphertext');
-                });
-
-
-                document.getElementById('imageEncryptButton').addEventListener('click', function () {
-                    encryptImage();
-                });
+    <script src="rsa.js"></script>
+    <script src="fileEncryption.js"></script>
+    <script src="rc4.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('fileEncryptButton').addEventListener('click', function () {
+                encryptFile('fileToEncrypt', 'fileCiphertext');
             });
-        </script>
 
-    </div>
-
+            document.getElementById('imageEncryptButton').addEventListener('click', function () {
+                encryptImage();
+            });
+        });
+    </script>
 </body>
 
 </html>
